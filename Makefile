@@ -10,6 +10,8 @@ LIBFT = $(LIBFT_PATH)/libft.a
 HEADERS = -I ./includes -I $(LIBFT_PATH)
 
 SRCS =	./src/main.c \
+		./src/error.c \
+		./src/files.c \
 
 SRCDIR = src/
 OBJS = $(SRCS:$(SRCDIR)%.c=%.o)
