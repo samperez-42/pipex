@@ -6,7 +6,7 @@
 /*   By: samperez <samperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 10:22:30 by samperez          #+#    #+#             */
-/*   Updated: 2025/05/02 10:39:58 by samperez         ###   ########.fr       */
+/*   Updated: 2025/05/12 14:27:21 by samperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	check_permissions(char *file1, char *file2)
 	return (EXIT_SUCCESS);
 }
 
-int	file_check(char *file1, char *file2)
+int	file_check(t_pipex *pipex, char *file1, char *file2)
 {
 	int	fd1;
 	int	fd2;
@@ -35,7 +35,7 @@ int	file_check(char *file1, char *file2)
 	fd1 = open(file1, O_RDONLY);
 	fd2 = open(file2, O_RDONLY);
 	if (!fd1 || !fd2)
-		return(ft_error(2, "Error: Can't open the files"));
+		return(ft_error(13, "Error: Can't open the files"));
 	
 	
 	return (EXIT_SUCCESS);
