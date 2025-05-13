@@ -6,7 +6,7 @@
 /*   By: samperez <samperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:35:18 by samperez          #+#    #+#             */
-/*   Updated: 2025/05/13 09:59:06 by samperez         ###   ########.fr       */
+/*   Updated: 2025/05/13 12:13:12 by samperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_pipex
 
 int		ft_error(t_pipex *pipex, int errno, char *str);
 void	free_pipex(t_pipex *pipex);
-int		file_check(t_pipex *pipex, char *file1, char *file2);
-int		command_check(t_pipex *pipex, char *cmd1, char *cmd2, char **envp);
+int		file_check(t_pipex *pipex);
+int		command_check(t_pipex *pipex, char **envp);
 
 #endif
