@@ -6,27 +6,11 @@
 /*   By: samperez <samperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 12:37:25 by samperez          #+#    #+#             */
-/*   Updated: 2025/05/13 12:14:27 by samperez         ###   ########.fr       */
+/*   Updated: 2025/05/13 13:04:32 by samperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
-
-static void	free_paths(char **path)
-{
-	int	i;
-
-	if (!path)
-		return ;
-	i = 0;
-	while (path[i])
-	{
-		free(path[i]);
-		path[i] = NULL;
-		i++;
-	}
-	free(path);
-}
 
 static char	**get_path(char **path, char **envp)
 {
@@ -50,21 +34,42 @@ static char	**get_path(char **path, char **envp)
 	return (NULL);
 }
 
-// env || grep PATH to get the command paths,
-//	read each file and determine if command exists
-// Don't forget to free the split of paths
+static char	*search_paths(char **full_cmd, char *cmd)
+{
+	int		i;
+	char	*tmp;
+	char	*cmd_path;
+
+	i = 0;
+	tmp = NULL;
+	cmd_path = NULL;
+	while (full_cmd[i] != NULL)
+	{
+		tmp = ft_strjoin(full_cmd[i], "/");
+		cmd_path = ft_strjoin(tmp, cmd);
+		free(tmp);
+		if (access(cmd_path, X_OK) == 0)
+			return (cmd_path);
+		free (cmd_path);
+		i++;
+	}
+	return (NULL);
+}
+
 int	command_check(t_pipex *pipex, char **envp)
 {
-	char	**path;
-
-	path = NULL;
-	path = get_path(path, envp);
-	if (!path)
+	pipex->full_path = get_path(pipex->full_path, envp);
+	if (!pipex->full_path)
 	{
-		free_pipex(pipex);
-		return (ft_printf("Error\nPath not found in env variables.\n"));
+		ft_error(pipex, 2, "Error: Path not found in env variables.");
+		return (EXIT_FAILURE);
 	}
-	(void)pipex;
-	free_paths(path);
+	pipex->cmd_path1 = search_paths(pipex->full_path, pipex->cmd1);
+	pipex->cmd_path2 = search_paths(pipex->full_path, pipex->cmd2);
+	if (!pipex->cmd_path1 || !pipex->cmd_path2)
+	{
+		ft_error(pipex, 2, "Error: Command not found or doesn't exist");
+		return (EXIT_FAILURE);
+	}
 	return (EXIT_SUCCESS);
 }
