@@ -6,7 +6,7 @@
 /*   By: samperez <samperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 13:06:14 by samperez          #+#    #+#             */
-/*   Updated: 2025/05/13 12:22:48 by samperez         ###   ########.fr       */
+/*   Updated: 2025/05/19 11:45:06 by samperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	main(int argc, char **argv, char **envp)
 
 	pipex = NULL;
 	if (argc != 5)
-		return (ft_error(pipex, 22, "Error: Incorrect number of arguments"));
+		return (ft_printf("Error: Incorrect number of arguments\n"));
 	if (!argv[1][0] || !argv[2][0] || !argv[3][0] || !argv[4][0])
-		return (ft_error(pipex, 22, "Error: Empty arguments"));
+		return (ft_printf("Error: Empty arguments\n"));
 	pipex = malloc(sizeof(t_pipex));
 	if (!pipex)
 		return (EXIT_FAILURE);
@@ -39,6 +39,8 @@ int	main(int argc, char **argv, char **envp)
 	if (file_check(pipex))
 		return (EXIT_FAILURE);
 	if (command_check(pipex, envp))
+		return (EXIT_FAILURE);
+	if (fork_pipe(pipex))
 		return (EXIT_FAILURE);
 	free_pipex(pipex);
 	return (EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: samperez <samperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 12:37:25 by samperez          #+#    #+#             */
-/*   Updated: 2025/05/13 13:04:32 by samperez         ###   ########.fr       */
+/*   Updated: 2025/05/19 11:41:53 by samperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,16 @@ int	command_check(t_pipex *pipex, char **envp)
 	pipex->full_path = get_path(pipex->full_path, envp);
 	if (!pipex->full_path)
 	{
-		ft_error(pipex, 2, "Error: Path not found in env variables.");
+		ft_error(pipex, "Path not found in env variables.");
 		return (EXIT_FAILURE);
 	}
 	pipex->cmd_path1 = search_paths(pipex->full_path, pipex->cmd1);
 	pipex->cmd_path2 = search_paths(pipex->full_path, pipex->cmd2);
 	if (!pipex->cmd_path1 || !pipex->cmd_path2)
 	{
-		ft_error(pipex, 2, "Error: Command not found or doesn't exist");
+		ft_error(pipex, "Command not found or doesn't exist");
 		return (EXIT_FAILURE);
 	}
+//	ft_printf("CMD_1 Path: %s\nCMD_2 Path: %s\n", pipex->cmd_path1, pipex->cmd_path2);
 	return (EXIT_SUCCESS);
 }
