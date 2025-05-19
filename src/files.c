@@ -6,7 +6,7 @@
 /*   By: samperez <samperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 10:22:30 by samperez          #+#    #+#             */
-/*   Updated: 2025/05/19 11:43:15 by samperez         ###   ########.fr       */
+/*   Updated: 2025/05/19 15:26:25 by samperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ int	file_check(t_pipex *pipex)
 	fd2 = open(pipex->file2, O_RDONLY);
 	if (!fd1 || !fd2)
 		return (ft_error(pipex, "Can't open the files"));
+	close(fd1);
+	close(fd2);
 	return (EXIT_SUCCESS);
 }
