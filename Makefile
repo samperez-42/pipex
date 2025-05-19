@@ -13,6 +13,7 @@ SRCS =	./src/main.c \
 		./src/error.c \
 		./src/files.c \
 		./src/commands.c \
+		./src/fork.c \
 
 SRCDIR = src/
 OBJS = $(SRCS:$(SRCDIR)%.c=%.o)
