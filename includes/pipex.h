@@ -6,7 +6,7 @@
 /*   By: samperez <samperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:35:18 by samperez          #+#    #+#             */
-/*   Updated: 2025/05/19 11:41:35 by samperez         ###   ########.fr       */
+/*   Updated: 2025/05/19 15:08:42 by samperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ typedef struct s_pipex
 {
 	char	*file1;
 	char	*file2;
-	char	*cmd1;
-	char	*cmd2;
+	char	**cmd1;
+	char	**cmd2;
 	char	*cmd_path1;
 	char	*cmd_path2;
 	char	**full_path;
@@ -42,6 +42,6 @@ void	free_pipex(t_pipex *pipex);
 int		file_check(t_pipex *pipex);
 int		command_check(t_pipex *pipex, char **envp);
 // Fork / pipe process functions
-int		fork_pipe(t_pipex *pipex);
+int		fork_pipe(t_pipex *pipex, char **envp);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: samperez <samperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 12:37:25 by samperez          #+#    #+#             */
-/*   Updated: 2025/05/19 14:43:47 by samperez         ###   ########.fr       */
+/*   Updated: 2025/05/19 15:09:36 by samperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ static	int	check_absolute_path(t_pipex *pipex, char *cmd, char number)
 	if (access(cmd, X_OK) == 0)
 	{
 		if (number == '1')
-			pipex->cmd_path1 = ft_strdup(pipex->cmd1);
+			pipex->cmd_path1 = ft_strdup(pipex->cmd1[0]);
 		else if (number == '2')
-			pipex->cmd_path2 = ft_strdup(pipex->cmd2);
+			pipex->cmd_path2 = ft_strdup(pipex->cmd2[0]);
 		return (EXIT_SUCCESS);
 	}
 	return (EXIT_FAILURE);
@@ -77,15 +77,14 @@ int	command_check(t_pipex *pipex, char **envp)
 		ft_error(pipex, "Path not found in env variables.");
 		return (EXIT_FAILURE);
 	}
-	if (check_absolute_path(pipex, pipex->cmd1, '1') == EXIT_FAILURE)
-		pipex->cmd_path1 = search_paths(pipex->full_path, pipex->cmd1);
-	if (check_absolute_path(pipex, pipex->cmd2, '2') == EXIT_FAILURE)
-		pipex->cmd_path2 = search_paths(pipex->full_path, pipex->cmd2);
+	if (check_absolute_path(pipex, pipex->cmd1[0], '1') == EXIT_FAILURE)
+		pipex->cmd_path1 = search_paths(pipex->full_path, pipex->cmd1[0]);
+	if (check_absolute_path(pipex, pipex->cmd2[0], '2') == EXIT_FAILURE)
+		pipex->cmd_path2 = search_paths(pipex->full_path, pipex->cmd2[0]);
 	if (!pipex->cmd_path1 || !pipex->cmd_path2)
 	{
 		ft_error(pipex, "Command not found or doesn't exist");
 		return (EXIT_FAILURE);
 	}
-//	ft_printf("CMD_1 Path: %s\nCMD_2 Path: %s\n", pipex->cmd_path1, pipex->cmd_path2);
 	return (EXIT_SUCCESS);
 }

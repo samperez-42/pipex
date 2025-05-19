@@ -6,7 +6,7 @@
 /*   By: samperez <samperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 09:48:13 by samperez          #+#    #+#             */
-/*   Updated: 2025/05/19 11:41:10 by samperez         ###   ########.fr       */
+/*   Updated: 2025/05/19 15:08:51 by samperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ void	free_pipex(t_pipex *pipex)
 {
 	if (pipex)
 	{
+		if (pipex->cmd1)
+			free_paths(pipex->cmd1);
+		if (pipex->cmd2)
+			free_paths(pipex->cmd2);
 		if (pipex->cmd_path1)
 			free(pipex->cmd_path1);
 		if (pipex->cmd_path2)

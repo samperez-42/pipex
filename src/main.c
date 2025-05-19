@@ -6,7 +6,7 @@
 /*   By: samperez <samperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 13:06:14 by samperez          #+#    #+#             */
-/*   Updated: 2025/05/19 11:45:06 by samperez         ###   ########.fr       */
+/*   Updated: 2025/05/19 15:09:47 by samperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static void	init_struct(t_pipex *pipex, char **argv)
 {
 	pipex->file1 = argv[1];
-	pipex->cmd1 = argv[2];
-	pipex->cmd2 = argv[3];
+	pipex->cmd1 = ft_split(argv[2], ' ');
+	pipex->cmd2 = ft_split(argv[3], ' ');
 	pipex->file2 = argv[4];
 	pipex->cmd_path1 = NULL;
 	pipex->cmd_path2 = NULL;
@@ -40,8 +40,8 @@ int	main(int argc, char **argv, char **envp)
 		return (EXIT_FAILURE);
 	if (command_check(pipex, envp))
 		return (EXIT_FAILURE);
-	if (fork_pipe(pipex))
-		return (EXIT_FAILURE);
+/* 	if (fork_pipe(pipex, envp))
+		return (EXIT_FAILURE); */
 	free_pipex(pipex);
 	return (EXIT_SUCCESS);
 }
