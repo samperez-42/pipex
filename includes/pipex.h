@@ -6,7 +6,7 @@
 /*   By: samperez <samperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:35:18 by samperez          #+#    #+#             */
-/*   Updated: 2025/05/19 15:08:42 by samperez         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:11:11 by samperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int		ft_error(t_pipex *pipex, char *str);
 void	free_paths(char **path);
 void	free_pipex(t_pipex *pipex);
 // Checker functions
+int		check_empty_argv(char **argv);
 int		file_check(t_pipex *pipex);
 int		command_check(t_pipex *pipex, char **envp);
 // Fork / pipe process functions

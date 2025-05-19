@@ -6,7 +6,7 @@
 /*   By: samperez <samperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 09:48:13 by samperez          #+#    #+#             */
-/*   Updated: 2025/05/19 15:08:51 by samperez         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:10:57 by samperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,19 @@ void	free_pipex(t_pipex *pipex)
 			free_paths(pipex->full_path);
 		free(pipex);
 	}
+}
+
+int	check_empty_argv(char **argv)
+{
+	if (!argv[1][0] || !argv[2][0] || !argv[3][0] || !argv[4][0])
+		return (EXIT_FAILURE);
+	if (argv[1][0] == ' ' || argv[2][0] == ' ' || argv[3][0] == ' '
+		|| argv[4][0] == ' ')
+		return (EXIT_FAILURE);
+	if (argv[1][0] == '\t' || argv[2][0] == '\t' || argv[3][0] == '\t'
+		|| argv[4][0] == '\t')
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
 
 int	ft_error(t_pipex *pipex, char *str)
