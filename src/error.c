@@ -6,12 +6,13 @@
 /*   By: samperez <samperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 09:48:13 by samperez          #+#    #+#             */
-/*   Updated: 2025/05/19 17:10:57 by samperez         ###   ########.fr       */
+/*   Updated: 2025/05/26 10:36:12 by samperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
+// Frees the allocated split of paths in env
 void	free_paths(char **path)
 {
 	int	i;
@@ -28,6 +29,7 @@ void	free_paths(char **path)
 	free(path);
 }
 
+// Frees the struct
 void	free_pipex(t_pipex *pipex)
 {
 	if (pipex)
@@ -46,6 +48,7 @@ void	free_pipex(t_pipex *pipex)
 	}
 }
 
+// Checks for empty arguments like "" or "	"
 int	check_empty_argv(char **argv)
 {
 	if (!argv[1][0] || !argv[2][0] || !argv[3][0] || !argv[4][0])
@@ -59,6 +62,7 @@ int	check_empty_argv(char **argv)
 	return (EXIT_SUCCESS);
 }
 
+// Sends a custom error message and terminates the program
 int	ft_error(t_pipex *pipex, char *str)
 {
 	free_pipex(pipex);

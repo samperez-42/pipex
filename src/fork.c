@@ -6,7 +6,7 @@
 /*   By: samperez <samperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:13:18 by samperez          #+#    #+#             */
-/*   Updated: 2025/05/19 16:58:02 by samperez         ###   ########.fr       */
+/*   Updated: 2025/05/26 10:31:23 by samperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	child_process(t_pipex *pipex, int *fd, char **envp)
 	exit (EXIT_FAILURE);
 }
 
+// This process executes part 2 of the structure, applying cmd2 into file2
 void	parent_process(t_pipex *pipex, int *fd, char **envp)
 {
 	int		outfile;

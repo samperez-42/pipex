@@ -6,12 +6,13 @@
 /*   By: samperez <samperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 12:37:25 by samperez          #+#    #+#             */
-/*   Updated: 2025/05/19 15:09:36 by samperez         ###   ########.fr       */
+/*   Updated: 2025/05/26 10:34:17 by samperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
+// Gets a split of paths stored in env 
 static char	**get_path(char **path, char **envp)
 {
 	int		i;
@@ -34,6 +35,7 @@ static char	**get_path(char **path, char **envp)
 	return (NULL);
 }
 
+// Searches the whole list of paths until one matches
 static char	*search_paths(char **full_cmd, char *cmd)
 {
 	int		i;
@@ -56,6 +58,7 @@ static char	*search_paths(char **full_cmd, char *cmd)
 	return (NULL);
 }
 
+// Function to check if cmd1 or cmd2 are passed as absolute paths
 static	int	check_absolute_path(t_pipex *pipex, char *cmd, char number)
 {
 	if (access(cmd, X_OK) == 0)

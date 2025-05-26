@@ -6,12 +6,13 @@
 /*   By: samperez <samperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 10:22:30 by samperez          #+#    #+#             */
-/*   Updated: 2025/05/19 17:17:34 by samperez         ###   ########.fr       */
+/*   Updated: 2025/05/26 10:32:24 by samperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
+// Checks if file1 & file2 exist and have the correct permissions 
 static int	check_permissions(t_pipex *pipex)
 {
 	if (access(pipex->file1, F_OK) == -1 || access(pipex->file2, F_OK) == -1)
@@ -25,6 +26,7 @@ static int	check_permissions(t_pipex *pipex)
 	return (EXIT_SUCCESS);
 }
 
+// Does a few checks regarding file permissions
 int	file_check(t_pipex *pipex)
 {
 	int	fd1;
