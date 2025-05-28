@@ -6,7 +6,7 @@
 /*   By: samperez <samperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 10:22:30 by samperez          #+#    #+#             */
-/*   Updated: 2025/05/26 12:11:48 by samperez         ###   ########.fr       */
+/*   Updated: 2025/05/28 13:03:28 by samperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	check_permissions(t_pipex *pipex)
 		return (ft_error(pipex, "No reading permission on file"));
 	if (access(pipex->file1, W_OK) == -1 || access(pipex->file2, W_OK) == -1)
 		return (ft_error(pipex, "No writing permission on file"));
-	if (access(pipex->file1, X_OK) == -1 || access(pipex->file2, X_OK) == -1)
+	if (access(pipex->file2, X_OK) == -1)
 		return (ft_error(pipex, "No execution permission on file"));
 	return (EXIT_SUCCESS);
 }
